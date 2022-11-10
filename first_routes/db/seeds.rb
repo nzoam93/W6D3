@@ -39,12 +39,12 @@ ApplicationRecord.transaction do
   a3 = Artwork.create!(title: 'american gothic', image_url: 'googl3e.com', artist_id: u1.id)
   a4 = Artwork.create!(title: 'the scream', image_url: 'goog4le.com', artist_id: u4.id)
 
-
   ArtworkShare.create!(artwork_id: a1.id, viewer_id: u2.id) # shares mona lisa with will
   ArtworkShare.create!(artwork_id: a4.id, viewer_id: u1.id) # shares the scream with noam
 
-
-
+  c1 = Comment.create!(body: 'great artwork', artwork_id: 4, author_id: 1)
+  c2 = Comment.create!(body: 'weird eyes', artwork_id: 1, author_id: 2)
+  c3 = Comment.create!(body: 'sublime', artwork_id: 2, author_id: 1)
 
   puts 'Done!'
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :update, :create, :destroy]
   resources :artworks, only: [:show, :update, :create, :destroy]
   resources :artwork_shares, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy, :index]
   # resources :users,  except: [:new, :edit]
 
   resources :users do

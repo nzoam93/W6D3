@@ -12,9 +12,14 @@ class ArtworkShare < ApplicationRecord
   validates :artwork_id, :viewer_id, presence: true
   validates :artwork_id, uniqueness: { scope: :viewer_id }
 
-  belongs_to :artwork
-  belongs_to :viewer, class_name: :User
-  
+  # belongs to
+  belongs_to :artwork,
+    inverse_of: :artwork_shares
+
+  belongs_to :viewer,
+    class_name: :User,
+    inverse_of: :artwork_shares
+
 
 
 end
