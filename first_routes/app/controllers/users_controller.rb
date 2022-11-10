@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     # replace the `user_attributes_here` with the actual attribute keys
-    user.save!
+    # user.save!
     if user.save
       render json: user
     else
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     redirect_to users_url #this is plural because it needs the prefix of the index function
   end
 
+  private
   def user_params
     params.require(:user).permit(:username)
   end
