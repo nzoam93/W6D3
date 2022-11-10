@@ -10,7 +10,7 @@
 class User < ApplicationRecord
   validates :username, presence: true
 
-  has_many :artworks, foreign_key: :artist_id, dependent: :destroy
+  has_many :artworks, foreign_key: :artist_id, dependent: :destroy#, inverse_of: :artist
   has_many :artwork_shares, foreign_key: :viewer_id, dependent: :destroy
 
   has_many :shared_artworks,

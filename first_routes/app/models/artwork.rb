@@ -22,6 +22,12 @@ class Artwork < ApplicationRecord
 
   has_many :shared_viewers, through: :artwork_shares, source: :viewer
 
+  def self.artworks_for_user_id(id) # class method because it's called with Artwork.artworks_for_user_id
+    proprietary_art = Artwork.where(artist_id: id) # could also use: .where('artist_id = ?', id)
 
+    shared_art = User.find_by(id: id).shared_artworks
+
+    proprietary_art | shared_art
+  end
 
 end

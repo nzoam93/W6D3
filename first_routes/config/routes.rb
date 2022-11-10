@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users, only: [:index, :show, :update, :create, :destroy]
-  resources :artworks, only: [:index, :show, :update, :create, :destroy]
+  resources :artworks, only: [:show, :update, :create, :destroy]
   resources :artwork_shares, only: [:create, :destroy]
   # resources :users,  except: [:new, :edit]
+
+  resources :users do
+    resources :artworks, only: [:index]
+  end
 
   # get 'users', to: 'users#index', as: 'users'
   # get 'users/:id', to: 'users#show', as: 'user'
