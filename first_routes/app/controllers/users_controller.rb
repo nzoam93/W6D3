@@ -1,6 +1,19 @@
+#any method in controller is fed in params (a hash of info)
 class UsersController < ApplicationController
   def index
-    users = User.all
+    # if params[:username] #assuming that the query key is username
+    #   users = User.where('username = ?',params[:username])
+    # else
+    #   users = User.all
+    # end
+
+    only_user = params.permit(:username)
+    if params[:username] #assuming that the query key is username
+      users = User.where(only_user)
+    else
+      users = User.all
+    end
+
     render json: users
   end
 

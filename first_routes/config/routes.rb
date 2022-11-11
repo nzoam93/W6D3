@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     resources :artworks, only: [:index]
   end
 
+  resources :users do
+    resources :comments, only: [:index]
+  end
+
+  resources :artworks do
+    resources :comments, only: [:index]
+  end
   # get 'users', to: 'users#index', as: 'users'
   # get 'users/:id', to: 'users#show', as: 'user'
   # post 'users', to: 'users#create'

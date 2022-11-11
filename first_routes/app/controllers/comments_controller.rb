@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
 
   def index
-    comments = Comment.all
+    comments = Comment.comments_for_author_or_artwork(other_params)
+
     render json: comments
   end
 
@@ -29,4 +30,7 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body, :author_id, :artwork_id)
     end
 
+    def other_params
+      params.permit(:author_id, :artwork_id)
+    end
 end

@@ -11,6 +11,9 @@ class ArtworksController < ApplicationController
 
     def create
       artwork = Artwork.new(artwork_params)
+      # long way: artwork = Artwork.new(title:params[:title], :author_url:, :artwork)
+      # bad way: artwork = Artwork.new(params[:artwork])
+
       # replace the `user_attributes_here` with the actual attribute keys
     #   artwork.save!
       if artwork.save
